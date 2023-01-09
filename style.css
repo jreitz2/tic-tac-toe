@@ -1,0 +1,55 @@
+body {
+    box-sizing: border-box;
+    background-color: black;
+}
+
+h1 {
+    font-size: 4rem;
+    color: white;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.turn-order {
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.winner {
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+.squares {
+    background-color: rgb(255, 255, 255);
+    width: 40rem;
+    height: 40rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.square {
+    background-color: rgb(0, 0, 0);
+    color: red;
+    font-size: 7rem;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 10rem;
+}
+
+.btn {
+    text-align: center;
+    margin: 1rem;
+}
+.reset {
+    Padding: 5px;
+    margin: auto;
+    font-weight: bold;
+}
