@@ -4,7 +4,7 @@ body {
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: 3.5rem;
     color: white;
     text-align: center;
     margin-top: 2rem;
@@ -14,14 +14,14 @@ h1 {
 .turn-order {
     color: white;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
 }
 
 .winner {
     color: white;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-top: 1rem;
 }
 .squares {
@@ -41,15 +41,42 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 10rem;
+    height: 12.5rem;
+    cursor: pointer;
+}
+
+.not-allowed {
+    pointer-events: none;
 }
 
 .btn {
     text-align: center;
     margin: 1rem;
 }
+
 .reset {
     Padding: 5px;
     margin: auto;
     font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.reset:hover {
+    background-color: black;
+    color:white;
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 2rem;
+    }
+    .squares {
+        width: 350px;
+        height: 350px;
+    }
+    .square {
+        font-size: 2rem;
+        height: 6.5rem;
+    }
+    
 }

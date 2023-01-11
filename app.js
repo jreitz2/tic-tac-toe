@@ -3,6 +3,7 @@ const createPlayer = (name, marker) => {
 }
 let turnOrder = document.querySelector('.turn-order');
 let winner = document.querySelector('.winner');
+let winnerDeclared = false;
 const gameBoard = (() => {
     let board = [];
     for(i = 0; i < 9; i++) {
@@ -20,15 +21,29 @@ const gameBoard = (() => {
         square.addEventListener('click', () => {
             square.textContent = game.currentPlayer.marker;
             gameBoard.board[index] = game.currentPlayer.marker;
-            // square.style.pointerEvents = 'none';
+            if (game.currentPlayer.marker === "O") {
+                square.style.color = "blue";
+            } else {
+                square.style.color = "red";
+            }
+            if (square.textContent !== '') {
+                square.classList.add("not-allowed");
+            }        
             game.remainingSquares -= 1;
             game.checkWinner();
-            if (game.winnerDeclared === false) {
+            if (winnerDeclared === true) {
+                Array.from(squares.children).forEach(square => {
+                    square.classList.add('not-allowed');
+                })
+            }
+            if (winnerDeclared === false) {
                 if (game.remainingSquares > 0 ) {
                     game.alertPlayer();
                     game.changeCurrentPlayer();
                 } else if (game.remainingSquares === 0) {
                     game.declareTie();
+                    console.log(game.remainingSquares)
+                    console.log(winnerDeclared);
                 }
             }
         })
@@ -42,13 +57,15 @@ const gameBoard = (() => {
     function resetBoard () {
         gameBoard.board = ['', '', '', '', '', '', '', '', ''];
         game.remainingSquares = 9;
-        game.winnerDeclared = false;
+        winnerDeclared = false;
         game.currentPlayer = game.playerOne;
         turnOrder.innerHTML = `It's ${game.currentPlayer.marker}'s turn!`;
         winner.textContent = '';
-        console.log(game.winnerDeclared);
         Array.from(squares.children).forEach(square => {
                 square.textContent = '';
+        })
+        Array.from(squares.children).forEach(square => {
+            square.classList.remove('not-allowed');
         })
     };
 
@@ -61,7 +78,7 @@ const game = (() => {
     const playerTwo = createPlayer('Player 2', 'O');
 
     let currentPlayer = playerOne;
-    let winnerDeclared = false;
+    // let winnerDeclared = false;
     let remainingSquares = 9;
 
     // let turnOrder = document.querySelector('.turn-order');
